@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Order_Flow_Imbalance_10D",
+    "expression": "TS_ZSCORE(($high - $low) * $volume, 10)",
+    "performance": {
+      "ic": 0.00951348,
+      "rank_ic": 0.02940911,
+      "annual_return": 0.13919537
+    }
+  },
+  {
+    "name": "Ranked_Volume_Range_10D",
+    "expression": "RANK(TS_MEAN(($high - $low) * $volume, 10))",
+    "performance": {
+      "ic": 0.00951348,
+      "rank_ic": 0.02940911,
+      "annual_return": 0.13919537
+    }
+  },
+  {
+    "name": "Smoothed_OFL_Imbalance_10D",
+    "expression": "ZSCORE(EMA(($high - $low) * $volume, 10))",
+    "performance": {
+      "ic": 0.00951348,
+      "rank_ic": 0.02940911,
+      "annual_return": 0.13919537
+    }
+  },
+  {
+    "name": "MidpointDevVolumeZScore_20D",
+    "expression": "TS_ZSCORE(($close-($high+$low)/2)/($high-$low+1e-8),20)*TS_ZSCORE($volume,20)",
+    "performance": {
+      "ic": 0.0078296,
+      "rank_ic": 0.02480677,
+      "annual_return": 0.08303183
+    }
+  },
+  {
+    "name": "RankedAbsDevVolumeFactor",
+    "expression": "RANK(ABS($close-($high+$low)/2)/($high-$low+1e-8)*ZSCORE($volume))",
+    "performance": {
+      "ic": 0.0078296,
+      "rank_ic": 0.02480677,
+      "annual_return": 0.08303183
+    }
+  },
+  {
+    "name": "DevVolumeCorrelation_20D",
+    "expression": "TS_CORR(($close-($high+$low)/2)/($high-$low+1e-8),$volume,20)",
+    "performance": {
+      "ic": 0.0078296,
+      "rank_ic": 0.02480677,
+      "annual_return": 0.08303183
+    }
+  },
+  {
+    "name": "EMA_Volume_Price_Divergence_10D",
+    "expression": "ABS(EMA($volume / TS_MEAN($volume, 10), 10) - EMA($close / TS_MEAN($close, 10), 10))",
+    "performance": {
+      "ic": 0.00707553,
+      "rank_ic": 0.02425799,
+      "annual_return": 0.09304467
+    }
+  },
+  {
+    "name": "Ranked_EMA_Divergence_10D",
+    "expression": "RANK(EMA($volume / TS_MEAN($volume, 10), 10) - EMA($close / TS_MEAN($close, 10), 10))",
+    "performance": {
+      "ic": 0.00707553,
+      "rank_ic": 0.02425799,
+      "annual_return": 0.09304467
+    }
+  },
+  {
+    "name": "ZScore_Normalized_Divergence_10D",
+    "expression": "TS_ZSCORE($volume / TS_MEAN($volume, 10) - $close / TS_MEAN($close, 10), 10)",
+    "performance": {
+      "ic": 0.00707553,
+      "rank_ic": 0.02425799,
+      "annual_return": 0.09304467
+    }
+  },
+  {
+    "name": "PriceVolumeDivergence_20D_ZScore",
+    "expression": "ZSCORE(TS_PCTCHANGE($close, 20)) - ZSCORE(TS_PCTCHANGE($volume, 20))",
+    "performance": {
+      "ic": 0.00776442,
+      "rank_ic": 0.02322139,
+      "annual_return": 0.15996341
+    }
+  },
+  {
+    "name": "Volume_Spike_Decay_5D",
+    "expression": "$volume / (TS_MAX($volume, 5) + 1e-8)",
+    "performance": {
+      "ic": 0.00665411,
+      "rank_ic": 0.02337836,
+      "annual_return": 0.05383206
+    }
+  },
+  {
+    "name": "Price_Reversion_Volume_Shock_10D",
+    "expression": "($close - $open) * TS_ZSCORE($volume, 10)",
+    "performance": {
+      "ic": 0.00665411,
+      "rank_ic": 0.02337836,
+      "annual_return": 0.05383206
+    }
+  },
+  {
+    "name": "Volatility_Adjusted_Recovery_20D",
+    "expression": "TS_ZSCORE($volume, 20) / (TS_STD($return, 20) + 1e-8)",
+    "performance": {
+      "ic": 0.00665411,
+      "rank_ic": 0.02337836,
+      "annual_return": 0.05383206
+    }
+  },
+  {
+    "name": "VolAdj_AbsReturnMean_5D20D",
+    "expression": "ABS(TS_MEAN($return, 5)) / (TS_STD($return, 20) + 1e-8)",
+    "performance": {
+      "ic": 0.00846395,
+      "rank_ic": 0.02253696,
+      "annual_return": 0.10284474
+    }
+  },
+  {
+    "name": "VolumeRangeCorr_Delta_10D",
+    "expression": "DELTA(TS_CORR($volume, $high - $low, 10), 1)",
+    "performance": {
+      "ic": 0.00846395,
+      "rank_ic": 0.02253696,
+      "annual_return": 0.10284474
+    }
+  },
+  {
+    "name": "ReturnMomentum_VolatilityNormalized_5D10D",
+    "expression": "TS_MEAN($return, 5) / (TS_STD($return, 10) + 1e-8)",
+    "performance": {
+      "ic": 0.00846395,
+      "rank_ic": 0.02253696,
+      "annual_return": 0.10284474
+    }
+  },
+  {
+    "name": "Overnight_Return_Volume_ZScore",
+    "expression": "(($open - DELAY($close, 1)) / DELAY($close, 1)) * ZSCORE($volume)",
+    "performance": {
+      "ic": 0.0086916,
+      "rank_ic": 0.02756313,
+      "annual_return": 0.12031081
+    }
+  },
+  {
+    "name": "Overnight_Return_Market_Volume_Ratio",
+    "expression": "(($open - DELAY($close, 1)) / DELAY($close, 1)) * ($volume / MEAN($volume))",
+    "performance": {
+      "ic": 0.0086916,
+      "rank_ic": 0.02756313,
+      "annual_return": 0.12031081
+    }
+  },
+  {
+    "name": "Overnight_Return_Volume_Momentum",
+    "expression": "(($open - DELAY($close, 1)) / DELAY($close, 1)) * TS_ZSCORE($volume, 20)",
+    "performance": {
+      "ic": 0.0086916,
+      "rank_ic": 0.02756313,
+      "annual_return": 0.12031081
+    }
+  },
+  {
+    "name": "Normalized_Gap_Volume_Ratio_20D",
+    "expression": "TS_ZSCORE(($open - DELAY($close,1))/($volume+1e-8),20)",
+    "performance": {
+      "ic": 0.00978828,
+      "rank_ic": 0.02688465,
+      "annual_return": 0.08236312
+    }
+  }
+]

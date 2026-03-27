@@ -1,0 +1,28 @@
+# Python 缓存和环境
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# 前端 Node.js 依赖
+node_modules/
+dist/
+build/
+
+# 日志、模型权重、大型数据文件
+*.log
+*.pth
+*.h5
+*.csv
+*.dat
+*.pkl
+.DS_Store
+
+# 实验产生的特定缓存文件夹
+RD-Agent/git_ignore_folder/
+RD-Agent/result/

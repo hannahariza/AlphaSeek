@@ -1,0 +1,47 @@
+# Global configs:
+
+MAX_RETRY=12000
+RETRY_WAIT_SECONDS=5
+TIMEOUT_FAIL_LIMIT=100
+
+# litellm
+# CHAT_MODEL=gpt-4o
+# CHAT_TEMPERATURE=0.7
+
+CHAT_STREAM=False
+CHAT_TEMPERATURE=1
+CHAT_MODEL=deepseek-chat
+SYSTEM_PROMPT_ROLE=user
+
+BACKEND=rdagent.oai.backend.LiteLLMAPIBackend
+OPENAI_API_KEY=ededa4d127d34f7e9ba965130a7ecbd3
+OPENAI_API_BASE=https://api.deepseek.com/v1
+
+
+# amc chat model configs:
+EMBEDDING_MODEL=Qwen/Qwen3-Embedding-8B
+
+# Cache Setting (Optional):
+DUMP_CHAT_CACHE=True
+USE_CHAT_CACHE=False
+DUMP_EMBEDDING_CACHE=True
+USE_EMBEDDING_CACHE=False
+LOG_LLM_CHAT_CONTENT=True
+
+DS_LOCAL_DATA_PATH=/tmp/kaggle
+
+DS_IF_USING_MLE_DATA=True
+
+
+PICKLE_CACHE_FOLDER_PATH_STR=./log/pickle_cache
+CACHE_WITH_PICKLE=False
+ENABLE_CACHE=False
+PROMPT_CACHE_PATH=./log/prompt_cache.db
+
+DS_CODER_COSTEER_ENV_TYPE=conda
+# DS_PROPOSAL_VERSION=v2 deprecated
+
+DS_CODER_ON_WHOLE_PIPELINE=True
+COSTEER_V2_QUERY_FORMER_TRACE_LIMIT=3
+
+# export PYTHONPATH=.  # this is for running researcher branch;
